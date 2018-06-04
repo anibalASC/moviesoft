@@ -1,25 +1,37 @@
-from flask import Flask, request, jsonify
-
-database = []
+from flask import Flask, request, jsonify, render_template
+from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////home/anibal/Documentos/projects/moviesoft/baseMovie.db'
+db = SQLAlchemy(app)
+
+class Movie(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(80), unique=False, nullable=False)
+    year = db.Column(db.Integer, unique=False, nullable=False)
+    category = db.Column(db.String(50), unique=False, nullable=False)
+    director = db.Column(db.String(50), unique=False, nullable=False)
+
+    def __repr__(self):
+        return '<id: %r>' % self.id
 
 @app.route('/movies', methods=['GET', 'POST'])
 def movie():
     if request.method == 'POST':
-        id = len(database) + 1
         name = request.form['name']
         year = request.form['year']
         category = request.form['category']
         director = request.form['director']
-        movie = {"id":id,"name":name,"year":year,"category":category,"director":director}
-        database.append(movie)
-        print(movie)
+        movie = Movie(name=name, year=year, category=category, director=director)
+        db.session.add(movie)
+        db.session.commit()
+        return 'pelicula creada'
+    elif request.method == 'GET'
+        return render_template('index.htnml', movies=Movie.query.all())
 
-        return jsonify(movie)
-    return jsonify(database)
 
+#############################aqui me quede###########################################    
 @app.route('/movies/<int:movie_id>', methods=['GET'])
 def search(movie_id):
     movie_filter = list(filter(lambda x: x['id'] == movie_id, database))
