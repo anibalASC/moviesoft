@@ -57,15 +57,7 @@ def update(movie_id):
 
 
 
-# garaje = []
-# coche1 = {'marca': 'Renault', 'color': 'rojo', 'combustible': 'gasoil'}
-# coche2 = {'marca': 'Renault', 'color': 'verde', 'combustible': 'gasolina'}
-# coche3 = {'marca': 'Mercedes', 'color': 'gris metalizado', 'combustible': 'gasolina'}
-# garaje.append(coche1)
-# garaje.append(coche2)
-# garaje.append(coche3)
-# for i in garaje:
-#     print(i['marca'], i['color'], i['combustible'])
+#
     # movie_update = list(filter(lambda x: x['id'] == movie_id, database))
     # database.update(new_database)
     # print(movie_update)
