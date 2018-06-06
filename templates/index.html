@@ -1,6 +1,15 @@
 {% extends 'base/base.html' %}
 {% block content %}
-<table>
+<head>
+  <nav>
+     <ul class="lisnav">
+        <li><a href="#" class="liNav">Home</a></li>
+        <li><a href="#"  class="liNav">Nueva pelicula</a></li>
+        <li id="liSearch"><input class="searchbar" type="text" placeholder="Buscar..."></li>
+     </ul>
+  </nav>
+</head>
+<table class="table">
   <thead>
     <tr>
       <th>Id</th>
@@ -14,13 +23,15 @@
   <tbody>
     {% for movie in movies %}
       <tr>
-        <td><a href="/movies/">{{ movie.id }}</a></td>
-        <td><a href="#">{{ movie.name }}</a></td>
-        <td><a href="">{{ movie.year }}</a></td>
-        <td><a href="">{{ movie.category }}</a></td>
-        <td><a href="">{{ movie.director }}</a></td>
+        <td><a href="/movies/{{movie.id}}">{{ movie.id }}</a></td>
+        <td><a href="/movies/{{movie.id}}">{{ movie.name }}</a></td>
+        <td><a href="/movies/{{movie.id}}">{{ movie.year }}</a></td>
+        <td><a href="/movies/{{movie.id}}">{{ movie.category }}</a></td>
+        <td><a href="/movies/{{movie.id}}">{{ movie.director }}</a></td>
       </tr>
     {% endfor %}
   </tbody>
 </table>
+
+
 {% endblock %}

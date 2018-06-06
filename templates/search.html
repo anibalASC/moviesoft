@@ -1,8 +1,35 @@
 {% extends 'index.html' %}
 {% block content %}
+<head>
+  <nav>
+      <ul class="lisnav">
+        <li><a href="#" class="liNav">Home</a></li>
+        <li><a href="#"  class="liNav">Nueva pelicula</a></li>
+      </ul>
+  </nav>
+</head>
+
 {{movie.id}}
 {{movie.name}}
 {{movie.year}}
 {{movie.category}}
 {{movie.director}}
+<form method="POST" action="/movies/{{movie.id}}">
+  <fieldset>
+    <legend for "Movie">Movie:</legend>
+    <labe for="name">Name</labe>
+    <input type="text" name="name" value="{{movie.name}}"><br>
+
+    <labe for="year">Year</labe>
+    <input type="year" name="year" value="{{movie.year}}"><br>
+
+    <labe for="category">Category</labe>
+    <input type="category" name="category" value="{{movie.category}}"><br>
+
+    <labe for="director">Director</labe>
+    <input type="director" name="director" value="{{movie.director}}"><br>
+    <input type="submit" value="submit">
+  </fieldset>
+</form>
+
 {% endblock %}

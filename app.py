@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify, render_template
+from flask import Flask, request, jsonify, render_template, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
@@ -15,6 +15,10 @@ class Movie(db.Model):
 
     def __repr__(self):
         return '<id:%r>' % self.id
+
+@app.route('/', methods=['GET', 'POST'])
+def index():
+    return render_template('home.html')
 
 @app.route('/movies/', methods=['GET', 'POST'])
 def movie():
@@ -42,8 +46,8 @@ def search(id):
     return "pelicula no encontrada"
 
 
-
-@app.route('/movies/<int:id>', methods=['DELETE'])
+######################crear eliminar usando el metodo POST####################
+@app.route('/movies/<int:id>', methods=['POST'])
 def delete(id):
     movie_delete = Movie.query.filter_by(id=id).first()
     if request.method == 'DELETE':
@@ -51,20 +55,22 @@ def delete(id):
         db.session.commit()
         return "la pelicula se elimino"
 
-@app.route('/movies/<int:movie_id>', methods=['PUT'])
+@app.route('/movies/<int:movie_id>', methods=['GET', 'POST'])
 def update(movie_id):
-    if request.method == 'PUT':
-        movie_update = list(filter(lambda x: x['id'] == movie_id))
-        if request.form['name'] != '':
-            movie_update[0]['name'] = request.form['name']
-        if request.form['year'] != '':
-            movie_update[0]['year'] = request.form['year']
-        if request.form['category'] != '':
-            movie_update[0]['category'] = request.form['category']
-        if request.form['director'] != '':
-            movie_update[0]['director'] = request.form['director']
-        database.append(movie_update)
-    return jsonify(database)
+    movie_update = Movie.query.filter_by(id=movie_id).first()
+    if request.method == 'GET':
+        return render_template('search.html', movie=movie_update)
+    if movie_update.name != request.form['name']:
+        movie_update.name = request.form['name']
+    if movie_update.name != request.form['year']:
+        movie_update.year = request.form['year']
+    if movie_update.name != request.form['category']:
+        movie_update.category = request.form['category']
+    if movie_update.category != request.form['director']:
+        movie_update.director = request.form['director']
+    db.session.commit()
+    return redirect(url_for('movie'))
+    # return jsonify(database)
 
 
 
