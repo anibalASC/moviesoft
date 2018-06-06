@@ -1,0 +1,26 @@
+{% extends 'base/base.html' %}
+{% block content %}
+<table>
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Year</th>
+      <th>Category</th>
+      <th>Director</th>
+    </tr>
+
+  </thead>
+  <tbody>
+    {% for movie in movies %}
+      <tr>
+        <td><a href="/movies/">{{ movie.id }}</a></td>
+        <td><a href="#">{{ movie.name }}</a></td>
+        <td><a href="">{{ movie.year }}</a></td>
+        <td><a href="">{{ movie.category }}</a></td>
+        <td><a href="">{{ movie.director }}</a></td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}
