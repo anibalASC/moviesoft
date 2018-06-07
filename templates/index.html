@@ -4,7 +4,7 @@
   <nav>
      <ul class="lisnav">
         <li><a href="#" class="liNav">Home</a></li>
-        <li><a href="#"  class="liNav">Nueva pelicula</a></li>
+        <li><a href="/movies/" class="liNav">Nueva pelicula</a></li>
         <li id="liSearch"><input class="searchbar" type="text" placeholder="Buscar..."></li>
      </ul>
   </nav>
@@ -17,6 +17,7 @@
       <th>Year</th>
       <th>Category</th>
       <th>Director</th>
+      <th></th>
     </tr>
 
   </thead>
@@ -28,10 +29,24 @@
         <td><a href="/movies/{{movie.id}}">{{ movie.year }}</a></td>
         <td><a href="/movies/{{movie.id}}">{{ movie.category }}</a></td>
         <td><a href="/movies/{{movie.id}}">{{ movie.director }}</a></td>
+        <td><a class="delete-botton" href="/movies/delete/{{movie.id}}">Delete</a></td>
       </tr>
     {% endfor %}
   </tbody>
 </table>
 
+<body>
+  <form action = '/movies/' method = "POST">
+    <label for = "name">Name</label><br>
+    <input type = "text" name = "name" placeholder = "Name" /><br>
+    <label for = "year">year</label><br>
+    <input type = "text" name = "year" placeholder = "year" /><br>
+    <label for = "category">category</label><br>
+    <input type = "text" name = "category" placeholder = "category" /><br>
+    <label for = "director">director</label><br>
+    <input type = "text" name = "director" placeholder = "director" /><br>
+    <input type = "submit" value = "Submit" />
+  </form>
 
+</body>
 {% endblock %}

@@ -20,6 +20,7 @@ class Movie(db.Model):
 def index():
     return render_template('home.html')
 
+                                        ###Add movie###
 @app.route('/movies/', methods=['GET', 'POST'])
 def movie():
     if request.method == 'POST':
@@ -30,14 +31,13 @@ def movie():
         movie = Movie(name=name, year=year, category=category, director=director)
         db.session.add(movie)
         db.session.commit()
-        return 'pelicula creada'
+        return redirect(url_for('movie'))
     elif request.method == 'GET':
         print(Movie.query.all())
         return render_template('index.html', movies=Movie.query.all())
 
 
-
-
+#                                        ###search movie###
 @app.route('/movies/<int:id>', methods=['GET'])
 def search(id):
     movie_search = Movie.query.filter_by(id=id).first()
@@ -45,15 +45,15 @@ def search(id):
         return render_template('search.html', movie=movie_search)
     return "pelicula no encontrada"
 
-
-######################crear eliminar usando el metodo POST####################
-@app.route('/movies/<int:id>', methods=['POST'])
+                                        ####delete movie###
+@app.route('/movies/delete/<int:id>',)
 def delete(id):
     movie_delete = Movie.query.filter_by(id=id).first()
-    if request.method == 'DELETE':
-        db.session.delete(movie_delete)
-        db.session.commit()
-        return "la pelicula se elimino"
+    db.session.delete(movie_delete)
+    db.session.commit()
+    return redirect(url_for('movie'))
+
+
 
 @app.route('/movies/<int:movie_id>', methods=['GET', 'POST'])
 def update(movie_id):
@@ -71,19 +71,6 @@ def update(movie_id):
     db.session.commit()
     return redirect(url_for('movie'))
     # return jsonify(database)
-
-
-
-
-
-
-
-#
-    # movie_update = list(filter(lambda x: x['id'] == movie_id, database))
-    # database.update(new_database)
-    # print(movie_update)
-    # return jsonify(new_database)
-#modificar el valor
 
 
 if __name__=='__main__':
