@@ -1,0 +1,149 @@
+
+/* .table, th, td{
+  border: black 1px solid;
+  margin: 15px;
+  padding: 40px;
+  background-color: lightgrey;
+  font-family: inherit;
+} */
+
+.datosmovie{
+  font-style: italic;
+  font-size: 15px;
+}
+.datosmovie:hover{
+  background-color: blue;
+}
+/* nav{
+  padding:  0px;
+  margin: 0px;
+  background-color: blue;
+} */
+/* Botones */
+.button {
+  /* display: inline-block; */
+  padding: 5px 5px;
+  font-size: 12px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #001284;
+  border: none;
+  border-radius: 2px;
+  box-shadow: 3px 3px #999;
+}
+
+.button:hover {background-color: #E8BD0C}
+
+.button:active {
+  background-color: #E8BD0C;
+  box-shadow: 0 5px #E8BD0C;
+  transform: translateY(4px);
+}
+
+.button_eliminar {
+  /* display: inline-block; */
+  padding: 10px 15px;
+  font-size: 15px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: blue;
+  border: none;
+  border-radius: 2px;
+  box-shadow: 3px 3px #999;
+}
+
+.button_eliminar:hover {background-color: red}
+
+.button_eliminar:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+/* navbar*/
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+    top: 0;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover {
+    background-color: #111;
+}
+
+.active {
+    background-color: #4CAF50;
+}
+
+input[type=text] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    /* border-style: 0; */
+
+    background-color: #FFFED4;
+    color: black;
+
+  }
+
+
+
+
+  table {
+      border-collapse: collapse;
+      border: 1px solid #CCC;
+      font-size: 12px;
+
+  }
+
+  th {
+      font-weight: bold;
+      background-color: #E1E1E1;
+      padding:5px;
+      border: 1px solid #CCC;
+  }
+
+  tbody tr:hover td {
+      background-color: #F3F3F3;
+  }
+
+  td {
+      padding: 5px 10px;
+      border: 1px solid #CCC;
+      padding: 30px
+  }
+
+
+
+
+
+
+/* @media screen and (max-width: 600px){
+    ul.listnav li.right,
+    ul.lisnav li {float: none;}
+} */
