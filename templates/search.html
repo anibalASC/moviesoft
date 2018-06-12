@@ -1,12 +1,15 @@
 {% extends 'index.html' %}
 {% block content %}
 <head>
+
   <nav>
-      <ul class="lisnav">
-        <li><a href="#" class="liNav">Home</a></li>
-        <li><a href="#"  class="liNav">Nueva pelicula</a></li>
-      </ul>
+     <ul class="lisnav">
+        <li><a href="/" class="liNav">Home</a></li>
+        <li><a href="/movies/"  class="">Movies</a></li>
+        <li><a href="/newMovie" class="liNav">New Movie</a></li>
+     </ul>
   </nav>
+
 </head>
 
 {{movie.id}}
@@ -14,22 +17,33 @@
 {{movie.year}}
 {{movie.category}}
 {{movie.director}}
-<form method="POST" action="/movies/{{movie.id}}">
-  <fieldset>
-    <legend for "Movie">Movie:</legend>
-    <labe for="name">Name</labe>
-    <input type="text" name="name" value="{{movie.name}}"><br>
+{{movie.distributed}}
+<body>
 
-    <labe for="year">Year</labe>
-    <input type="year" name="year" value="{{movie.year}}"><br>
 
-    <labe for="category">Category</labe>
-    <input type="category" name="category" value="{{movie.category}}"><br>
+  <form class="actualizar_movie" method="POST" action="{{url_for('update', movie_id=movie.id)}}?_method=PATCH">
+    <fieldset>
+      <legend for "Movie">UPDATE MOVIE:</legend>
+      <labe for="name">Name:</labe>
+      <input type="text" name="name" value="{{movie.name}}"><br>
 
-    <labe for="director">Director</labe>
-    <input type="director" name="director" value="{{movie.director}}"><br>
-    <input type="submit" value="submit">
-  </fieldset>
-</form>
+      <labe for="year">Year:</labe>
+      <input type="text" name="year" value="{{movie.year}}"><br>
 
+      <labe for="category">Category:</labe>
+      <input type="text" name="category" value="{{movie.category}}"><br>
+
+      <labe for="director">Director:</labe>
+      <input type="text" name="director" value="{{movie.director}}"><br>
+
+      <labe for="distributed">Distributed:</labe>
+      <input type="text" name="distributed" value="{{movie.distributed}}"><br>
+
+      <labe for="image">Imagen:</labe>
+      <input type="file" name="image" value="{{movie.image}}"><br>
+
+      <input type="submit" value="submit">
+    </fieldset>
+  </form>
+</body>
 {% endblock %}

@@ -1,19 +1,20 @@
 <!DOCTYPE html>
+{% extends 'base/base.html' %}
+{% block content %}
+
 <html>
+<title>Home</title>
 <head>
-  <title>Home</title>
-
-
     <nav>
        <ul class="lisnav">
-          <li><a href='/movies/' class="liNav">Movies</a></li>
-          <li><a href="#"  class="liNav">New Movie</a></li>
-          <li id="liSearch"><input class="searchbar" type="text" placeholder="Buscar..."></li>
+          <li><a href="/" class="liNav">Home</a></li>
+          <li><a href="/movies/"  class="">Movies</a></li>
+          <li><a href="/newMovie" class="liNav">Nueva pelicula</a></li>
        </ul>
     </nav>
-
 </head>
 <body>
   <h2>inicio</h2>
 </body>
 </html>
+{% endblock %}
