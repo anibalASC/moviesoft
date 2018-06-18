@@ -11,33 +11,37 @@
        </ul>
     </nav>
 </head>
-<body>
+<body class="body_newMovie">
+<section class="section_newMovie">
 
   <!-- formulario para agregar una nueva pelicula -->
-<fieldset>
-  <legend for "Movie">NEW MOVIE:</legend>
-  <form action = '/movies/' method = "POST" enctype="multipart/form-data">
+  <fieldset>
+    <legend for "Movie">NEW MOVIE:</legend>
+      <form action = '/movies/' method = "POST" enctype="multipart/form-data">
 
-      <label for = "name">Name:</label><br>
-      <input type = "text" name = "name" placeholder = "Name" /><br>
-      <label for = "year">year:</label><br>
-      <input type = "text" name = "year" placeholder = "year" /><br>
-      <label for = "category">category:</label><br>
-      <input type = "text" name = "category" placeholder = "category" /><br>
-      <label for = "director">director:</label><br>
-      <input type = "text" name = "director" placeholder = "director" /><br>
+          <label for = "name">Name:</label><br>
+          <input type = "text" name = "name" placeholder = "Name" /><br>
 
-      <label for = "director">distributed:</label><br>
-      <input type = "text" name = "distributed" placeholder = "distributed" /><br>
+          <label for = "year">year:</label><br>
+          <input type = "text" name = "year" placeholder = "year" /><br>
 
-      <label for= "image">Etiqueta Imagen</label><br>
-      <input type="file" name="image">
+          <label for = "category">category:</label><br>
+          <input type = "text" name = "category" placeholder = "category" /><br>
 
+          <label for = "director">director:</label><br>
+          <input type = "text" name = "director" placeholder = "director" /><br>
 
-      <input type = "submit" class= "button" value = "Submit" />
+          <label for = "director">distributed:</label><br>
+          <input type = "text" name = "distributed" placeholder = "distributed" /><br>
+
+          <label for= "image">Etiqueta Imagen</label><br>
+          <input type="file" name="image">
+
+          <input type = "submit" class= "button" value = "Submit" />
 
   </form>
 </fieldset>
+</section>
 </body>
 </html>
 {% endblock %}

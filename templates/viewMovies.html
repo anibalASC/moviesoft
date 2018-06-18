@@ -1,0 +1,21 @@
+{% extends 'index.html' %}
+{% block content %}
+<head>
+    <nav>
+      <ul class="lisnav">
+        <li><a href="/" class="liNav">Home</a></li>
+        <li><a href="/newMovie" class="liNav">New Movie</a></li>
+     </ul>
+  </nav>
+</head>
+<body>
+
+<form action="">
+<h2>asd</h2>
+{% for movie in movies %}
+<img src="{{url_for('static', filename = movie.image)}}" alt="" height="100">imagen</a>
+{%endfor%}
+<!-- <img src="" alt=""> -->
+
+</body>
+{% endblock %}

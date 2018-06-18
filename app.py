@@ -1,14 +1,14 @@
 import os
 from flask import Flask, request, render_template, redirect, url_for, send_from_directory
 from flask_sqlalchemy import SQLAlchemy
-from flask_modus import Modus
+# from flask_modus import Modus
 from werkzeug.utils import secure_filename
 
-UPLOAD_FOLDER = '/home/anibal/Documentos/projects/moviesoft/static/image'
+UPLOAD_FOLDER = '/home/anibal/Documentos/projects/moviesoft/static'
 ALLOWED_EXTENSIONS = set(['png','jpg','jpeg'])
 
 app = Flask(__name__)
-app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
+# app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
 
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 # modus = Modus(app)
@@ -35,7 +35,12 @@ def index():
 def newMovie():
     return render_template('newMovie.html')
 
-                                        ###Add movie###
+@app.route('/viewMovies', methods=['GET', 'POST'])
+def viewMovies():
+    return render_template('viewMovies.html')
+
+
+###############################################Add movie###############################################
 @app.route('/movies/', methods=['GET', 'POST'])
 def movie():
     if request.method == 'POST':
@@ -56,51 +61,98 @@ def movie():
         return render_template('index.html', movies=Movie.query.all())
 
 
-#                                        ###search movie###
+###############################################search movie###############################################
 @app.route('/movies/<int:id>', methods=['GET'])
 def search(id):
-    movie_search = Movie.query.get(id)
+    movie_search = Movie.query.filter_by(id=id).first()
+    # movie_search = Movie.query.get(id)
     if movie_search:
         return render_template('search.html', movie=movie_search)
     return "pelicula no encontrada"
 
-                                        ####delete movie###
+
+###############################################delete movie###############################################
 @app.route('/movies/delete/<int:id>',)
 def delete(id):
     movie_delete = Movie.query.filter_by(id=id).first()
+    os.remove(os.path.join(app.config['UPLOAD_FOLDER'], movie_delete.image))
     db.session.delete(movie_delete)
     db.session.commit()
     return redirect(url_for('movie'))
 
 
-                                        ###update###
-@app.route('/movies/<int:movie_id>', methods=['GET', 'PATCH'])
+###############################################update movie###############################################
+
+@app.route('/movies/<int:movie_id>', methods=['GET', 'POST'])
 def update(movie_id):
-    movie_update = Movie.query.get(movie_id)
+    movie_update = Movie.query.filter_by(id=id).first()
     if request.method == 'GET':
         return render_template('search.html', movie=movie_update)
-    if request.method == b'PATCH':
+    movie_update.name = request.form['name']
+    movie_update.year = request.form['year']
+    movie_update.category = request.form['category']
+    movie_update.director = request.form['director']
+    movie_update.distributed = request.form['distributed']
+    print(request.files['image'])
+    if 'image' in request.files:
+        os.remove(os.path.join(app.config['UPLOAD_FOLDER'], movie_update.image))
+        image = request.files['image']
+        print('image')
+        image_name = secure_filename(image.filename)
+        print('image_name')
+        image.save(os.path.join(app.config['UPLOAD_FOLDER'], image_name))
+    db.session.commit()
+    return render_template('search.html', movie=movie_update)
 
-        if movie_update.name != request.form['name']:
-            movie_update.name = request.form['name']
 
-        if movie_update.year != request.form['year']:
-            movie_update.year = request.form['year']
 
-        if movie_update.category != request.form['category']:
-            movie_update.category = request.form['category']
 
-        if movie_update.director != request.form['director']:
-            movie_update.director = request.form['director']
 
-        if movie_update.distributed != request.form['distributed']:
-            movie_update.distributed = request.form['distributed']
 
-        if movie_update.image != request.file['image']:
-            movie.update.image = request.file['image']
-        db.session.commit()
-        return redirect(url_for('movie'))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# @app.route('/movies/<int:movie_id>', methods=['GET', 'POST'])
+# def update(movie_id):
+#     movie_update = Movie.query.filter_by(id=id).first()
+#     if request.method == 'GET':
+#         return render_template('search.html', movie=movie_update)
+#     movie_update.name = request.form['name']
+#     movie_update.year = request.form['year']
+#     movie_update.category = request.form['category']
+#     movie_update.director = request.form['director']
+#     movie_update.distributed = request.form['distributed']
+#     print(request.files['image'])
+#     if 'image' in request.files:
+#         os.remove(os.path.join(app.config['UPLOAD_FOLDER'], movie_update.image))
+#         image = request.files['image']
+#         print('image')
+#         image_name = secure_filename(image.filename)
+#         print('image_name')
+#         image.save(os.path.join(app.config['UPLOAD_FOLDER'], image_name))
+#     db.session.commit()
+#     return render_template('search.html', movie=movie_update)
+        # return redirect(url_for('movie'))
     # return jsonify(database)
+
 
 
 if __name__=='__main__':
