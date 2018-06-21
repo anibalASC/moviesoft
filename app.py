@@ -36,9 +36,12 @@ def newMovie():
     return render_template('newMovie.html')
 
 @app.route('/viewMovies', methods=['GET', 'POST'])
-def viewMovies():
-    return render_template('viewMovies.html')
+def viewMovie():
+    return render_template('viewMovies.html', movies=Movie.query.all())
 
+@app.route('/moviesInfo', methods=['GET', 'POST'])
+def movieInfo():
+    return render_template('moviesInfo.html', movies=Movie.query.all())
 
 ###############################################Add movie###############################################
 @app.route('/movies/', methods=['GET', 'POST'])
