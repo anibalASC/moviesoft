@@ -19,9 +19,18 @@
 
   {% for movie in movies %}
   <div class="contenedor_hijo div-imagen">
-    <img class="imagen_cartel desvanecer" src="{{url_for('static', filename = movie.image)}}">
-    <p>{{movie.name}}</p>
+    <a href="/moviesInfo">
+      <img class="imagen_cartel desvanecer" src="{{url_for('static', filename = movie.image)}}">
+    </a>
+    <div>
+      <p>{{movie.name}}</p>
+      <p>Release Date: {{movie.year}}</p>
+      <p>Category: {{movie.category}}</p>
+      <p>Director: {{movie.director}}</p>
+      <p>Distributed by: {{movie.distributed}}</p>
     </div>
+    <p>{{movie.name}}</p>
+  </div>
     {% endfor %}
 </div>
 </div>
@@ -29,7 +38,7 @@
 </body>
 {% endblock %}
 <footer class="footer">
-        <p>Posted by: MovieSotf </p>
+        <p>Posted by: MovieSoft </p>
         <p>Contact information: <a href=""></a>Contact@contact.com</p>
 </footer>
 

@@ -21,22 +21,22 @@
 
 <!-- <body>action="{{url_for('update', movie_id=movie.id)}}?_method=PATCH" -->
 <section class="section_actualizar">
-  <form class="actualizar_movie" method="POST" action="/movies/{{movie.movie}}" enctype="multipart/form-data">
+  <form class="actualizar_movie" method="POST" action="/moviesSearch/{{movie.id}}" enctype="multipart/form-data">
     <fieldset>
       <legend for "Movie">UPDATE MOVIE:</legend>
-      <labe for="name">Name:</labe>
+      <label for="name">Name:</labe>
       <input type="text" name="name" value="{{movie.name}}"><br>
 
-      <labe for="year">Year:</labe>
+      <label for="year">Year:</labe>
       <input type="text" name="year" value="{{movie.year}}"><br>
 
-      <labe for="category">Category:</labe>
+      <label for="category">Category:</labe>
       <input type="text" name="category" value="{{movie.category}}"><br>
 
-      <labe for="director">Director:</labe>
+      <label for="director">Director:</labe>
       <input type="text" name="director" value="{{movie.director}}"><br>
 
-      <labe for="distributed">Distributed:</labe>
+      <label for="distributed">Distributed:</labe>
       <input type="text" name="distributed" value="{{movie.distributed}}"><br>
 
       <img src="{{url_for('static', filename = movie.image)}}" alt="" height="200">

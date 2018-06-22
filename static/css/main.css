@@ -1,4 +1,4 @@
-/* tabla de peliculas */
+/*##################tabla de peliculas#################*/
 .datosmovie{
   display: flex;
   flex-direction: row;
@@ -15,7 +15,7 @@
   display: flex;
   justify-content: center;
   background-color: white;
-
+  padding-top: 10px;
 }
 .table {
   border-collapse: collapse;
@@ -43,7 +43,7 @@ td {
 }
 
 
-/* Botones */
+/*#############################Botones#####################*/
 .button {
 
   padding: 5px 5px;
@@ -67,11 +67,17 @@ td {
   transform: translateY(4px);
 }
 
+
+*:focus {outline: none;}
+
+
+
+/*#########################boton eliminar##################*/
 .button_eliminar {
   display: flex;
   justify-content: center;
   align-content: center;
-  padding: 10px 0px;
+  padding: 7px 3px;
   font-size: 15px;
   cursor: pointer;
   text-align: center;
@@ -92,7 +98,7 @@ td {
   transform: translateY(4px);
 }
 
-/* navbar*/
+/*#################################navbar#################################*/
 
 .lisnav {
   display: flex;
@@ -126,18 +132,10 @@ li a:hover {
   background-color: #4CAF50;
 }
 
-input[type=text] {
-  width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  box-sizing: border-box;
-  background-color: #FFFED4;
-  color: black;
-
-  }
 
 
-            /* login */
+
+/*##########################login##########################*/
 .div_login{
   display: flex;
   flex-direction: row;
@@ -184,6 +182,62 @@ input[type=text] {
 .section_newMovie{
   color: white;
 }
+
+.formNewMovie{
+  background-color: #188AFF;
+}
+
+
+input[type=text] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  background-color: #FFFED4;
+  color: black;
+
+  }
+  
+p > label {
+  
+  display: block;
+}
+
+input[type=text],
+input[type=number],
+
+fieldset {
+/* requerido para estilizar adecuadamente elementos
+   de formulario en navegadores basados en WebKit */
+  -webkit-appearance: none;
+  
+  width : 100%;
+  border: 1px solid #333;
+  margin: 0;
+  
+  font-family: inherit;
+  font-size: 90%;
+  
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+label {
+  color: white;
+}
+
+form input:required {
+  border:2px solid yellow;
+  /* otras propiedades */
+ }
+
+
+
+
+
+
+
+
 
 .body_image_inicio{
  
@@ -235,7 +289,8 @@ main{
   flex-wrap: nowrap;
   background-color: DodgerBlue;
 }
-/* prueba */
+
+/*################### carteles de peliculas ###################*/
 
 
 .container_image {
@@ -252,11 +307,12 @@ main{
 }
 
 .imagen_cartel {
-  width: 200px;
-  height: 300px;
+  width: 250px;
+  height: 350px;
 }
 
 
+/*###################efecto hover para el carte de peliculas ############*/
 
 .div-imagen {
   display:inline-block;
@@ -264,12 +320,17 @@ main{
 }
 
 .div-imagen > div {
-  position:absolute;
-  top:0;
-  left:0;
-  z-index:-1;
-  padding:10px;
-  margin:0;
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+  position: absolute;
+  top: 0;
+  left: 20px;
+  right: 12px;
+  z-index: -1;
+  padding: 10px;
+  margin: 0;
+  color: white;
 }
 
 .desvanecer:hover {
@@ -281,8 +342,15 @@ main{
   transition: opacity 500ms;
 }
 
+p {
+  color: white;
+}
 
-
+p:hover{
+  opacity: 0.7;
+  -webkit-transition: cubic-bezier(0.075, 0.82, 0.165, 1);
+  -moz-transition: opacity 500ms;
+}
 
 
 
