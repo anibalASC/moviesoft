@@ -21,10 +21,10 @@
           <th>Category</th>
           <th>Director</th>
           <th>Distributed by</th>
+          <th>Sinopsis</th>
           <th>Image</th>
           <th>Delete Movie</th>
         </tr>
-
       </thead>
       <!-- tabla donde se muestran las peliculas registradas-->
       <tbody>
@@ -36,8 +36,8 @@
             <td><a class="datosmovie" href="/moviesSearch/{{movie.id}}">{{ movie.category }}</a></td>
             <td><a class="datosmovie" href="/moviesSearch/{{movie.id}}">{{ movie.director }}</a></td>
             <td><a class="datosmovie" href="/moviesSearch/{{movie.id}}">{{ movie.distributed }}</a></td>
+            <td><a class="datosmovie" href="/moviesSearch/{{movie.id}}">{{ movie.sinopsis }}</a></td>
             <td><a class="datosmovie" href="/moviesSearch/{{movie.id}}"><img src="{{url_for('static', filename = movie.image)}}" alt="" height="100"></a></td>
-
             <td><a class="button_eliminar" href="/movies/delete/{{movie.id}}">Delete</a></td>
           </tr>
         {% endfor %}

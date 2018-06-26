@@ -184,7 +184,7 @@ li a:hover {
 }
 
 .formNewMovie{
-  background-color: #188AFF;
+  background-color: rgb(105, 117, 129);
 }
 
 
@@ -258,13 +258,9 @@ body{
 main{
   background-repeat: repeat;
 }
-/* @media screen and (max-width: 600px){
-    ul.listnav li.right,
-    ul.lisnav li {float: none;}
-} */
 
 
-/* footer */
+/*##############################################footer##########################################3*/
 
 .footer{
   display: flex;
@@ -353,4 +349,37 @@ p:hover{
 }
 
 
+/*###################################media###################################*/
+/* section of image movie */
+@media screen and (max-width: 600px) {
+  table {
+      width:100%;
+  }
+  thead {
+      display: none;
+  }
+  tr:nth-of-type(2n) {
+      background-color: inherit;
+  }
+  tr td:first-child {
+      background: #f0f0f0;
+      font-weight:bold;
+      font-size:1.3em;
+  }
+  tbody td {
+      display: block;
+      text-align:center;
+  }
+  tbody td:before {
+      content: attr(data-th);
+      display: block;
+      text-align:center;
+  }
+}
 
+@media screen and (max-width: 320px) {
+  table {
+    display: block;
+    overflow-x: auto;
+  }
+}

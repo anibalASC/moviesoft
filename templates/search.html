@@ -39,11 +39,14 @@
       <label for="distributed">Distributed:</labe>
       <input type="text" name="distributed" value="{{movie.distributed}}"><br>
 
+      <label for="sinopsis">Sinopsis</label>
+      <input type="text" name="sinopsis" value="{{ movie.sinopsis }}"><br>
+
       <img src="{{url_for('static', filename = movie.image)}}" alt="" height="200">
           <br>
 
       <label for="image">Imagen</label>
-      <input type="file" name="image" value="{{movie.image}}">
+      <input required type="file" name="image" value="{{movie.image}}">
 
 
       <input type="submit" value="Submit">

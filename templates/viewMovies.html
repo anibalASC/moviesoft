@@ -19,17 +19,20 @@
 
   {% for movie in movies %}
   <div class="contenedor_hijo div-imagen">
-    <a href="/moviesInfo">
+    <a href="/moviesInfo/{{movie.id}}">
       <img class="imagen_cartel desvanecer" src="{{url_for('static', filename = movie.image)}}">
-    </a>
-    <div>
-      <p>{{movie.name}}</p>
-      <p>Release Date: {{movie.year}}</p>
-      <p>Category: {{movie.category}}</p>
-      <p>Director: {{movie.director}}</p>
-      <p>Distributed by: {{movie.distributed}}</p>
-    </div>
-    <p>{{movie.name}}</p>
+      <div>
+        <p>{{movie.name}}</p>
+      </a>
+        <!-- <p>Release Date: {{movie.year}}</p>
+          <p>Category: {{movie.category}}</p>
+          <p>Director: {{movie.director}}</p>
+          <p>Distributed by: {{movie.distributed}}</p> -->
+          <p>sinopsis: {{movie.sinopsis}}</p>
+        </div>
+        <a href="/moviesInfo/{{movie.id}}">
+          <p>{{movie.name}}</p>
+        </a>
   </div>
     {% endfor %}
 </div>
