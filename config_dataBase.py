@@ -13,6 +13,7 @@ class Movie(db.Model):
     category = db.Column(db.String(80), unique=False, nullable=False)
     director = db.Column(db.String(80), unique=False, nullable=False)
     distributed  = db.Column(db.String(80), unique=False, nullable=False)
+    sinopsis = db.Column(db.String(200), unique=False, nullable=False)
     image = db.Column(db.String(80), unique=False)
 
     def __repr__(self):

@@ -1,27 +1,51 @@
-
-/* .table, th, td{
-  border: black 1px solid;
-  margin: 15px;
-  padding: 40px;
-  background-color: lightgrey;
-  font-family: inherit;
-} */
-
+/*##################tabla de peliculas#################*/
 .datosmovie{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
   font-style: italic;
   font-size: 15px;
+  background-color: white;
+  text-decoration:none;
 }
 .datosmovie:hover{
-  background-color: blue;
+  background-color: white;
 }
-/* nav{
-  padding:  0px;
-  margin: 0px;
-  background-color: blue;
-} */
-/* Botones */
+.div_table{
+  display: flex;
+  justify-content: center;
+  background-color: white;
+  padding-top: 10px;
+}
+.table {
+  border-collapse: collapse;
+  border: 1px solid #CCC;
+  font-size: 12px;
+  width: 100%;
+  height: 100%
+}
+
+th {
+  font-weight: bold;
+  background-color: #E1E1E1;
+  padding:5px;
+  border: 1px solid #CCC;
+}
+
+tbody tr:hover td {
+  background-color: #F3F3F3;
+}
+
+td {
+  padding: 5px 10px;
+  border: 1px solid #CCC;
+  padding: 30px
+}
+
+
+/*#############################Botones#####################*/
 .button {
-  /* display: inline-block; */
+
   padding: 5px 5px;
   font-size: 12px;
   cursor: pointer;
@@ -43,9 +67,17 @@
   transform: translateY(4px);
 }
 
+
+*:focus {outline: none;}
+
+
+
+/*#########################boton eliminar##################*/
 .button_eliminar {
-  /* display: inline-block; */
-  padding: 10px 15px;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  padding: 7px 3px;
   font-size: 15px;
   cursor: pointer;
   text-align: center;
@@ -66,84 +98,288 @@
   transform: translateY(4px);
 }
 
-/* navbar*/
+/*#################################navbar#################################*/
 
-ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #333;
-    position: -webkit-sticky; /* Safari */
-    position: sticky;
-    top: 0;
+.lisnav {
+  display: flex;
+  justify-content: flex-start;
+  list-style-type: none;
+  margin: -9px;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+  position: sticky;
+  top: 0;
 }
 
 li {
-    float: left;
+  float: left;
 }
 
 li a {
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
 }
 
 li a:hover {
-    background-color: #111;
+  background-color: #188AFF;
 }
 
 .active {
-    background-color: #4CAF50;
+  background-color: #4CAF50;
 }
 
+
+
+
+/*##########################login##########################*/
+.div_login{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding-top: 5%;
+
+
+}
+.login{
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+  padding: 27px;
+  background-color: #ccc;
+}
+
+.button2 {
+  /* display: inline-block; */
+  padding: 5px 5px;
+  font-size: 12px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #26397F;
+  border: none;
+  border-radius: 2px;
+  box-shadow: 3px 3px #999;
+}
+
+.button2:hover {background-color: #5BCCC0}
+
+.button2:active {
+  background-color: #E8BD0C;
+  box-shadow: 0 5px #E8BD0C;
+}
+
+.section_login{
+  display: flex;
+  flex-direction: column;
+  padding-top: 7%;
+}
+.section_newMovie{
+  color: white;
+}
+
+.formNewMovie{
+  background-color: rgb(105, 117, 129);
+}
+
+
 input[type=text] {
-    width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    box-sizing: border-box;
-    /* border-style: 0; */
-
-    background-color: #FFFED4;
-    color: black;
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  background-color: #FFFED4;
+  color: black;
 
   }
+  
+p > label {
+  
+  display: block;
+}
+
+input[type=text],
+input[type=number],
+
+fieldset {
+/* requerido para estilizar adecuadamente elementos
+   de formulario en navegadores basados en WebKit */
+  -webkit-appearance: none;
+  
+  width : 100%;
+  border: 1px solid #333;
+  margin: 0;
+  
+  font-family: inherit;
+  font-size: 90%;
+  
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+label {
+  color: white;
+}
+
+form input:required {
+  border:2px solid yellow;
+  /* otras propiedades */
+ }
 
 
 
 
+
+
+
+
+
+.body_image_inicio{
+ 
+  background-image: url("../image/silla-de-director-de-cine-797.jpg"); */
+}
+
+.background_image_index{
+  background-image: url("../image/fondo_newMovies.jpg")
+}
+
+body{
+  height: 100%;
+  padding: 1px; 
+  background-color: #081926;
+  font-family: helvetica;
+}
+
+main{
+  background-repeat: repeat;
+}
+
+
+/*##############################################footer##########################################3*/
+
+.footer{
+  display: flex;
+  justify-content: space-evenly;
+  margin: 0 auto;
+  padding: 0 8px 38px;
+  width: 730px;
+  overflow: hidden;
+  color: white;
+}
+
+
+.as{
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  width: 20%;
+}
+
+.flex-container {
+  display: flex;
+  flex-wrap: nowrap;
+  background-color: DodgerBlue;
+}
+
+/*################### carteles de peliculas ###################*/
+
+
+.container_image {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  /* padding: 50px 20px; */
+}
+
+.contenedor_hijo {
+  text-align: center;
+  padding: 20px;
+  z-index: 1;
+}
+
+.imagen_cartel {
+  width: 250px;
+  height: 350px;
+}
+
+
+/*###################efecto hover para el carte de peliculas ############*/
+
+.div-imagen {
+  display:inline-block;
+  position:relative;
+}
+
+.div-imagen > div {
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+  position: absolute;
+  top: 0;
+  left: 20px;
+  right: 12px;
+  z-index: -1;
+  padding: 10px;
+  margin: 0;
+  color: white;
+}
+
+.desvanecer:hover {
+  opacity: 0.20;
+  -webkit-transition: opacity 500ms;
+  -moz-transition: opacity 500ms;
+  -o-transition: opacity 500ms;
+  -ms-transition: opacity 500ms;
+  transition: opacity 500ms;
+}
+
+p {
+  color: white;
+}
+
+p:hover{
+  opacity: 0.7;
+  -webkit-transition: cubic-bezier(0.075, 0.82, 0.165, 1);
+  -moz-transition: opacity 500ms;
+}
+
+
+/*###################################media###################################*/
+/* section of image movie */
+@media screen and (max-width: 600px) {
   table {
-      border-collapse: collapse;
-      border: 1px solid #CCC;
-      font-size: 12px;
-
+      width:100%;
   }
-
-  th {
-      font-weight: bold;
-      background-color: #E1E1E1;
-      padding:5px;
-      border: 1px solid #CCC;
+  thead {
+      display: none;
   }
-
-  tbody tr:hover td {
-      background-color: #F3F3F3;
+  tr:nth-of-type(2n) {
+      background-color: inherit;
   }
-
-  td {
-      padding: 5px 10px;
-      border: 1px solid #CCC;
-      padding: 30px
+  tr td:first-child {
+      background: #f0f0f0;
+      font-weight:bold;
+      font-size:1.3em;
   }
+  tbody td {
+      display: block;
+      text-align:center;
+  }
+  tbody td:before {
+      content: attr(data-th);
+      display: block;
+      text-align:center;
+  }
+}
 
-
-
-
-
-
-/* @media screen and (max-width: 600px){
-    ul.listnav li.right,
-    ul.lisnav li {float: none;}
-} */
+@media screen and (max-width: 320px) {
+  table {
+    display: block;
+    overflow-x: auto;
+  }
+}

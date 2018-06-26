@@ -2,42 +2,64 @@
 {% block content %}
 <!DOCTYPE html>
 <html>
-<head>
-    <nav>
-       <ul class="lisnav">
-          <li><a href="/" class="liNav">Home</a></li>
-          <li><a href="/movies/"  class="">Movies</a></li>
-          <!-- <li><a href="/newMovie" class="liNav">Nueva pelicula</a></li> -->
-       </ul>
-    </nav>
-</head>
-<body>
+    <head>
+        <nav>
+           <ul class="lisnav">
+              <li><a href="/" class="liNav">Home</a></li>
+              <li><a href="/movies/"  class="">Movies</a></li>
+              <li><a href="/newMovie" class="liNav">Nueva pelicula</a></li>
+              <li><a href="/viewMovies" class="">viewMovies</a></li>
+           </ul>
+        </nav>
+    </head>
+<body class="body_newMovie">
+<section class="section_newMovie">
 
   <!-- formulario para agregar una nueva pelicula -->
-<fieldset>
-  <legend for "Movie">NEW MOVIE:</legend>
-  <form action = '/movies/' method = "POST" enctype="multipart/form-data">
+  <div class="formNewMovie">
 
-      <label for = "name">Name:</label><br>
-      <input type = "text" name = "name" placeholder = "Name" /><br>
-      <label for = "year">year:</label><br>
-      <input type = "text" name = "year" placeholder = "year" /><br>
-      <label for = "category">category:</label><br>
-      <input type = "text" name = "category" placeholder = "category" /><br>
-      <label for = "director">director:</label><br>
-      <input type = "text" name = "director" placeholder = "director" /><br>
-
-      <label for = "director">distributed:</label><br>
-      <input type = "text" name = "distributed" placeholder = "distributed" /><br>
-
-      <label for= "image">Etiqueta Imagen</label><br>
-      <input type="file" name="image">
-
-
-      <input type = "submit" class= "button" value = "Submit" />
-
-  </form>
-</fieldset>
+      <fieldset>
+          <P>
+              <legend for "Movie">NEW MOVIE:</legend>
+        <form action = '/movies/' method = "POST" enctype="multipart/form-data">
+          </P>
+          <P>
+              <label for = "name">Name:</label><br>
+              <input required type = "text" name = "name" placeholder = "Name" /><br>
+          </P> 
+          <p>
+          <label for = "year">year:</label><br>
+          <input required type = "number" name = "year" placeholder = "year" /><br>
+          </p>
+          <p>
+          <label for = "category">category:</label><br>
+          <input required type = "text" name = "category" placeholder = "category" /><br>
+          </p>
+          <p>
+          <label for = "director">director:</label><br>
+          <input required type = "text" name = "director" placeholder = "director" /><br>
+          </p>
+          <p>
+          <label for = "director">distributed:</label><br>
+          <input required type = "text" name = "distributed" placeholder = "distributed" /><br>
+          </p>
+          <p>
+            <label for = "sinopsis">sinopsis:</label><br>
+            <input required type = "text" name = "sinopsis" placeholder = "sinopsis" /><br>
+            </p>
+          <label for= "image">Image:</label><br>
+          <input required type="file" name="image">
+          <p>
+              <input type = "submit" class= "button" value = "Submit" />
+          </p>
+        </fieldset>
+    </form>
+</div>
+</section>
+<footer class="footer">
+        <p>Posted by: </p>
+        <p>Contact information: <a href=""></a>Contact@contact.com</p>
+      </footer> 
 </body>
 </html>
 {% endblock %}

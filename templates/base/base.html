@@ -3,12 +3,18 @@
   <head>
 
     <title>"MovieSoft"</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/static/css/main.css">
   </head>
-  <body>
-    <h1>Movies</h1>
+  {% block content %}
 
-    {% block content %}
+
+  <body class="body_base">
+
+      <footer class="footer">
+          <p>Posted by: </p>
+          <p>Contact information: <a href=""></a>Contact@contact.com</p>
+        </footer>
 
     {% endblock %}
   </body>

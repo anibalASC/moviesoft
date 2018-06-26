@@ -1,20 +1,35 @@
-<!DOCTYPE html>
-{% extends 'base/base.html' %}
-{% block content %}
-
 <html>
-<title>Home</title>
 <head>
-    <nav>
-       <ul class="lisnav">
-          <li><a href="/" class="liNav">Home</a></li>
-          <li><a href="/movies/"  class="">Movies</a></li>
-          <li><a href="/newMovie" class="liNav">Nueva pelicula</a></li>
-       </ul>
-    </nav>
-</head>
-<body>
-  <h2>inicio</h2>
+  <title>Home</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/main.css">
+  
+  </head>
+  
+  <body class="body_image_inicio">
+      
+     
+
+  <main class="body_home">
+    <section class="section_login">
+      <div class="div_login">
+        <form class=login action="/viewMovies">
+          <label for = "user">User:</label>
+          <input class="box_login" type="text" name = "Usuario" placeholder="User">
+          <label for="password">Password:</label>
+          <input class="box_login" type="text" name = "Password" placeholder="Password">
+          <input type="submit"  class = "button2" value="Entrar">
+        </form>
+      </div>
+    </section>
+  </main>
+    <footer class="footer">
+        <p>Posted by: </p>
+        <p>Contact information: <a href=""></a>Contact@contact.com</p>
+      </footer>
+
+  
+ 
 </body>
+
 </html>
-{% endblock %}

@@ -1,15 +1,14 @@
 {% extends 'index.html' %}
 {% block content %}
 <head>
-
-  <nav>
-     <ul class="lisnav">
-        <li><a href="/" class="liNav">Home</a></li>
-        <li><a href="/movies/"  class="">Movies</a></li>
-        <li><a href="/newMovie" class="liNav">New Movie</a></li>
-     </ul>
-  </nav>
-
+    <nav>
+       <ul class="lisnav">
+          <li><a href="/" class="liNav">Home</a></li>
+          <li><a href="/movies/"  class="">Movies</a></li>
+          <li><a href="/newMovie" class="liNav">Nueva pelicula</a></li>
+          <li><a href="/viewMovies" class="">viewMovies</a></li>
+       </ul>
+    </nav>
 </head>
 
 {{movie.id}}
@@ -18,32 +17,45 @@
 {{movie.category}}
 {{movie.director}}
 {{movie.distributed}}
-<body>
 
 
-  <form class="actualizar_movie" method="POST" action="{{url_for('update', movie_id=movie.id)}}?_method=PATCH">
+<!-- <body>action="{{url_for('update', movie_id=movie.id)}}?_method=PATCH" -->
+<section class="section_actualizar">
+  <form class="actualizar_movie" method="POST" action="/moviesSearch/{{movie.id}}" enctype="multipart/form-data">
     <fieldset>
       <legend for "Movie">UPDATE MOVIE:</legend>
-      <labe for="name">Name:</labe>
+      <label for="name">Name:</labe>
       <input type="text" name="name" value="{{movie.name}}"><br>
 
-      <labe for="year">Year:</labe>
+      <label for="year">Year:</labe>
       <input type="text" name="year" value="{{movie.year}}"><br>
 
-      <labe for="category">Category:</labe>
+      <label for="category">Category:</labe>
       <input type="text" name="category" value="{{movie.category}}"><br>
 
-      <labe for="director">Director:</labe>
+      <label for="director">Director:</labe>
       <input type="text" name="director" value="{{movie.director}}"><br>
 
-      <labe for="distributed">Distributed:</labe>
+      <label for="distributed">Distributed:</labe>
       <input type="text" name="distributed" value="{{movie.distributed}}"><br>
 
-      <labe for="image">Imagen:</labe>
-      <input type="file" name="image" value="{{movie.image}}"><br>
+      <label for="sinopsis">Sinopsis</label>
+      <input type="text" name="sinopsis" value="{{ movie.sinopsis }}"><br>
 
-      <input type="submit" value="submit">
+      <img src="{{url_for('static', filename = movie.image)}}" alt="" height="200">
+          <br>
+
+      <label for="image">Imagen</label>
+      <input required type="file" name="image" value="{{movie.image}}">
+
+
+      <input type="submit" value="Submit">
+      <!-- <labe for="image">Imagen:</labe>
+      <input type="file" name="image" value="{{movie.image}}"><br>
+      <img src="{{url_for('static', filename=movie.image)}}" width="200">
+
+      <input type="submit" value="submit"> -->
     </fieldset>
   </form>
-</body>
+</section>
 {% endblock %}
