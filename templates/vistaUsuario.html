@@ -1,0 +1,45 @@
+{% extends 'base/base.html' %}
+{% block content %}
+<head>
+  <nav>
+    <ul class="lisnav">
+      <li><a href="/" class="liNav">Home</a></li>
+      <li><a href="/movies/"  class="">Movies</a></li>
+      <li><a href="/newMovie" class="liNav">Nueva pelicula</a></li>
+      <li><a href="/viewMovies" class="">viewMovies</a></li>
+      <li><a href="/registers/" class="liNav">Registro</a></li>
+    </ul>
+  </nav>
+</head>
+<body>
+  <div class="div_table">
+    <table class="table">
+      <thead>
+        <tr>
+          <!-- <th>Id</th> -->
+          <th>Usuarios</th>
+          <th>Email</th>
+          <th>Password</th>
+          <th>Delete Movie</th>
+        </tr>
+      </thead>
+      
+      <!-- tabla donde se muestran las peliculas registradas-->
+      <tbody>
+        {% for user in usuarios %}
+          <tr>  
+            <td><a class="datosmovie" href=""></a>{{ user.username }}</a></td>
+            <td><a href="datosmovie"></a>{{ user.email }} </td>
+            <td><a href="datosmovie"></a>{{ user.password }} </td>
+            <td><a class="button_eliminar" href="/listUser/delete/{{user.id}}">Delete</a></td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  <footer class="footer">
+      <p>Posted by: </p>
+      <p>Contact information: <a href=""></a>Contact@contact.com</p>
+    </footer>
+</body>
+{% endblock %}
