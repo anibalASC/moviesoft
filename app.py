@@ -1,7 +1,10 @@
 import os
-from flask import Flask, request, render_template, redirect, url_for, send_from_directory
+from flask import Flask, request, render_template, redirect, url_for, send_from_directory, flash
 from flask_sqlalchemy import SQLAlchemy
-# from flask_modus import Modus
+from wtforms import Form, BooleanField, StringField, PasswordField, validators
+from flask_wtf import Form
+from forms import RegistrationForms
+from wtforms.validators import DataRequired
 from werkzeug.utils import secure_filename
 
 UPLOAD_FOLDER = '/home/anibal/Documentos/projects/moviesoft/static'
@@ -13,6 +16,7 @@ app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 # modus = Modus(app)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////home/anibal/Documentos/projects/moviesoft/baseMovie.db'
+app.config['SECRET_KEY']='ESTA ES LA LLAVE'
 db = SQLAlchemy(app)
 
 class Movie(db.Model):
@@ -28,6 +32,52 @@ class Movie(db.Model):
     def __repr__(self):
         return '<id:%r>' % self.id
 
+class formDatos(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(25), unique=False, nullable=False)
+    email = db.Column(db.String(35), unique=False, nullable=False)
+    password = db.Column(db.String(20), unique=False, nullable=False)
+
+##############################################Routes User#################################################
+##############################################list DB user################################################
+@app.route('/listUser', methods=['GET', 'POST'])
+def userlist():
+    usuarios = formDatos.query.all()
+    print(usuarios[0].username)
+    email =formDatos.query.all()
+    return render_template('vistaUsuario.html', usuarios=usuarios, email=email)
+
+###############################################Add user###################################################
+@app.route('/registers/', methods=['GET', 'POST'])
+def register():
+    form = RegistrationForms(request.form)
+    if request.method == 'POST' and form.validate():
+        username = request.form['username']
+        email = request.form['email']
+        password = request.form['password']      
+        user = formDatos(username=form.username.data, email=form.email.data, password=form.password.data)
+        db.session.add(user)
+        db.session.commit()
+        flash('Thanks for Registering')
+        return redirect(url_for('register'))
+    elif request.method == 'GET':
+        print(formDatos.query.all())
+        return render_template('register.html', form=form)
+
+################################################delete user#########################################
+@app.route('/listUser/delete/<int:id>')
+def deluser(id):
+    user_delete = formDatos.query.filter_by(id=id).first()
+    db.session.delete(user_delete)
+    db.session.commit()
+    return redirect(url_for('userlist'))
+
+#################################################update user########################################
+
+
+####################################################################################################
+#################################################routes#############################################
+
 @app.route('/', methods=['GET', 'POST'])
 def index():
     return render_template('home.html')
@@ -35,6 +85,7 @@ def index():
 @app.route('/newMovie',  methods=['GET', 'POST'])
 def newMovie():
     return render_template('newMovie.html')
+
 
 @app.route('/viewMovies', methods=['GET', 'POST'])
 def viewMovie():
@@ -119,53 +170,4 @@ def update(movie_id):
 
 if __name__=='__main__':
     app.run(debug = True, port = 8080)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# @app.route('/movies/<int:movie_id>', methods=['GET', 'POST'])
-# def update(movie_id):
-#     movie_update = Movie.query.filter_by(id=id).first()
-#     if request.method == 'GET':
-#         return render_template('search.html', movie=movie_update)
-#     movie_update.name = request.form['name']
-#     movie_update.year = request.form['year']
-#     movie_update.category = request.form['category']
-#     movie_update.director = request.form['director']
-#     movie_update.distributed = request.form['distributed']
-#     print(request.files['image'])
-#     if 'image' in request.files:
-#         os.remove(os.path.join(app.config['UPLOAD_FOLDER'], movie_update.image))
-#         image = request.files['image']
-#         print('image')
-#         image_name = secure_filename(image.filename)
-#         print('image_name')
-#         image.save(os.path.join(app.config['UPLOAD_FOLDER'], image_name))
-#     db.session.commit()
-#     return render_template('search.html', movie=movie_update)
-        # return redirect(url_for('movie'))
-    # return jsonify(database)
-
 
