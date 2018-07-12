@@ -1,0 +1,23 @@
+{% extends 'vistaUsuario.html' %}
+{% block content %}
+
+
+{{usuarios.username}}
+{{usuarios.email}}
+{{usuarios.password}}
+<section class="section_actualizar">
+    <form class="actualizar_movie" method="POST" action="/updateusers/{{user.id}}" enctype="multipart/form-data">
+        <fieldset>
+            <legend for "formDatos">UPDATE Users:</legend>
+            <label for="username">Username:</labe>
+            <input type="text" name="username" value="{{user.username}}"><br>
+            <label for="email">Email:</label>
+            <input type="text" name="email" value="{{user.email}}"><br>
+            <label for="password">Password</label>
+            <input type="text" name="password" value="{{user.password}}">
+            <input type="submit" value="Submit">
+        </fieldset>
+    </form>
+</section>
+
+{% endblock %}

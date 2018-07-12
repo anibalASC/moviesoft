@@ -26,11 +26,11 @@
       
       <!-- tabla donde se muestran las peliculas registradas-->
       <tbody>
-        {% for user in usuarios %}
+        {% for user in user %}
           <tr>  
-            <td><a class="datosmovie" href=""></a>{{ user.username }}</a></td>
-            <td><a href="datosmovie"></a>{{ user.email }} </td>
-            <td><a href="datosmovie"></a>{{ user.password }} </td>
+            <td><a href="/updateusers/{{ user.id }}">{{ user.username }}</a></td>
+            <td><a href="/updateusers/{{ user.id }}">{{ user.email }} </td>
+            <td><a href="/updateusers/{{ user.id }}">{{ user.password }} </td>
             <td><a class="button_eliminar" href="/listUser/delete/{{user.id}}">Delete</a></td>
           </tr>
         {% endfor %}

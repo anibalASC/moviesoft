@@ -39,13 +39,6 @@ class formDatos(db.Model):
     password = db.Column(db.String(20), unique=False, nullable=False)
 
 ##############################################Routes User#################################################
-##############################################list DB user################################################
-@app.route('/listUser', methods=['GET', 'POST'])
-def userlist():
-    usuarios = formDatos.query.all()
-    print(usuarios[0].username)
-    email =formDatos.query.all()
-    return render_template('vistaUsuario.html', usuarios=usuarios, email=email)
 
 ###############################################Add user###################################################
 @app.route('/registers/', methods=['GET', 'POST'])
@@ -63,6 +56,17 @@ def register():
     elif request.method == 'GET':
         print(formDatos.query.all())
         return render_template('register.html', form=form)
+##############################################list DB user################################################
+@app.route('/listUser', methods=['GET', 'POST'])
+def usser():
+    user = formDatos.query.all()
+    return render_template('vistaUsuario.html', user=user)
+
+@app.route('/listUser/<int:id>', methods=['GET', 'POST'])
+def userlist(id):
+    user = formDatos.query.filter_by(id=id).first()
+    if user:
+        return render_template('updateUser.html', user=user)
 
 ################################################delete user#########################################
 @app.route('/listUser/delete/<int:id>')
@@ -70,13 +74,26 @@ def deluser(id):
     user_delete = formDatos.query.filter_by(id=id).first()
     db.session.delete(user_delete)
     db.session.commit()
-    return redirect(url_for('userlist'))
+    return redirect(url_for('listUser'))
 
 #################################################update user########################################
+#=========se esta creando el actualizar de los usuarios en la base de datos
+@app.route('/updateusers/<int:user_id>', methods=['GET', 'POST'])
+def updateuser(user_id):
+    user_update = formDatos.query.filter_by(id = user_id).first()
+    if request.method == 'GET':
+        print (user_update)
+        return render_template('updateUser.html', user = user_update)
+    user_update.username = request.form['usermane']
+    user_update.email = request.form['email']
+    user_update.password = request.form['password']
+    db.session.commit()
+    return render_template('updateUser.html', user=user_update)
+
 
 
 ####################################################################################################
-#################################################routes#############################################
+###############################################outes movies########################################
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
@@ -90,6 +107,7 @@ def newMovie():
 @app.route('/viewMovies', methods=['GET', 'POST'])
 def viewMovie():
     return render_template('viewMovies.html', movies=Movie.query.all())
+########################################vista de las pelicuas individuales############################
 
 @app.route('/moviesInfo/<int:id>', methods=['GET'])
 def movieInfo(id):
